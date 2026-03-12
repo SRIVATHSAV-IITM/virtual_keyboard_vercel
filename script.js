@@ -228,7 +228,8 @@ function onResults(results) {
         const avgY = (lc.y + rc.y) / 2;
         
         // Map normalized coordinates (0-1) to screen with sensitivity
-        let targetX = 0.5 + (avgX - 0.5) * SENSITIVITY;
+        // We invert X (0.5 - ...) to handle the webcam mirroring
+        let targetX = 0.5 - (avgX - 0.5) * SENSITIVITY;
         let targetY = 0.5 + (avgY - 0.5) * SENSITIVITY;
         
         targetX = Math.max(0, Math.min(1, targetX)) * window.innerWidth;
