@@ -32,6 +32,54 @@ const gazePointer = document.getElementById('gaze-pointer');
 const saveOverlay = document.getElementById('save-prompt-overlay');
 const filenameInput = document.getElementById('filename-input');
 const videoElement = document.getElementById('webcam');
+const customCursor = document.getElementById('custom-cursor');
+
+// Mirror element for cursor calculation
+const mirror = document.createElement('div');
+Object.assign(mirror.style, {
+    position: 'absolute',
+    visibility: 'hidden',
+    whiteSpace: 'pre-wrap',
+    wordWrap: 'break-word',
+    fontSize: '24px',
+    fontFamily: 'inherit',
+    lineHeight: '1.2',
+    padding: '0',
+    border: 'none',
+    width: 'calc(100% - 40px)', // account for text-area-container padding
+    left: '-9999px'
+});
+document.body.appendChild(mirror);
+
+function updateCursorPosition() {
+    if (mode === "save") {
+        customCursor.style.display = 'none';
+        return;
+    }
+
+    const textBeforeCursor = typedText;
+    mirror.textContent = textBeforeCursor;
+    
+    // Add a marker to get coordinates
+    const marker = document.createElement('span');
+    marker.textContent = '|';
+    mirror.appendChild(marker);
+
+    const rect = marker.getBoundingClientRect();
+    const mirrorRect = mirror.getBoundingClientRect();
+    
+    // Position inside container (20px padding)
+    const top = marker.offsetTop + 20 - textarea.scrollTop;
+    const left = marker.offsetLeft + 20;
+
+    if (top >= 20 && top < textarea.clientHeight + 20) {
+        customCursor.style.top = `${top}px`;
+        customCursor.style.left = `${left}px`;
+        customCursor.style.display = 'block';
+    } else {
+        customCursor.style.display = 'none';
+    }
+}
 
 // Initialize Keyboard
 function initKeyboard() {
@@ -149,6 +197,7 @@ function handleKey(key) {
     }
     textarea.value = typedText;
     textarea.scrollTop = textarea.scrollHeight;
+    updateCursorPosition();
     updateSuggestions();
 }
 
@@ -283,6 +332,7 @@ function updateGazePointer(x, y) {
                     words[words.length - 1] = target.dataset.suggestion;
                     typedText = words.join(" ") + " ";
                     textarea.value = typedText;
+                    updateCursorPosition();
                     updateSuggestions();
                 }
                 hoverState.element = null;
@@ -314,6 +364,7 @@ const camera = new Camera(videoElement, {
 
 document.addEventListener('DOMContentLoaded', () => {
     initKeyboard();
+    updateCursorPosition();
     camera.start().catch(err => {
         console.error("Camera access denied:", err);
         alert("Please allow camera access for eye tracking.");
