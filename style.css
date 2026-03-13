@@ -61,7 +61,7 @@ body, html {
 
 #custom-cursor {
     position: absolute;
-    width: 2px;
+    width: 3px;
     height: 28px;
     background-color: var(--cursor-color);
     top: 20px;
@@ -69,6 +69,7 @@ body, html {
     pointer-events: none;
     animation: blink 1s step-end infinite;
     display: none;
+    z-index: 100;
 }
 
 @keyframes blink {

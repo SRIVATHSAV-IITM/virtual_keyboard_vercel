@@ -36,18 +36,17 @@ const customCursor = document.getElementById('custom-cursor');
 
 // Mirror element for cursor calculation
 const mirror = document.createElement('div');
+mirror.id = 'text-mirror';
 Object.assign(mirror.style, {
     position: 'absolute',
     visibility: 'hidden',
     whiteSpace: 'pre-wrap',
     wordWrap: 'break-word',
-    fontSize: '24px',
-    fontFamily: 'inherit',
-    lineHeight: '1.2',
     padding: '0',
     border: 'none',
-    width: 'calc(100% - 40px)', // account for text-area-container padding
-    left: '-9999px'
+    left: '-9999px',
+    top: '0',
+    overflow: 'hidden'
 });
 document.body.appendChild(mirror);
 
@@ -57,22 +56,26 @@ function updateCursorPosition() {
         return;
     }
 
-    const textBeforeCursor = typedText;
-    mirror.textContent = textBeforeCursor;
+    // Sync styles from textarea to mirror
+    const style = window.getComputedStyle(textarea);
+    const properties = ['fontFamily', 'fontSize', 'fontWeight', 'lineHeight', 'padding', 'width', 'boxSizing', 'letterSpacing'];
+    properties.forEach(p => mirror.style[p] = style[p]);
     
-    // Add a marker to get coordinates
+    // Width must be exact to match wrapping
+    mirror.style.width = textarea.clientWidth + 'px';
+
+    // Replace all text and add a zero-width character + marker for position
+    mirror.textContent = typedText;
     const marker = document.createElement('span');
-    marker.textContent = '|';
+    marker.textContent = '\u200B'; // zero-width space
     mirror.appendChild(marker);
 
-    const rect = marker.getBoundingClientRect();
-    const mirrorRect = mirror.getBoundingClientRect();
-    
-    // Position inside container (20px padding)
+    // Calculate position
     const top = marker.offsetTop + 20 - textarea.scrollTop;
     const left = marker.offsetLeft + 20;
 
-    if (top >= 20 && top < textarea.clientHeight + 20) {
+    // Show only if within visible textarea bounds
+    if (top >= 10 && top < textarea.clientHeight + 20) {
         customCursor.style.top = `${top}px`;
         customCursor.style.left = `${left}px`;
         customCursor.style.display = 'block';
