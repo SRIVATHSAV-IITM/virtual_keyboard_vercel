@@ -117,42 +117,19 @@ function initKeyboard() {
 }
 
 function updateSuggestions() {
-    // Get the last "chunk" of text to match against (after last punctuation)
-    const lastPuncIndex = Math.max(
-        typedText.lastIndexOf('.'),
-        typedText.lastIndexOf('!'),
-        typedText.lastIndexOf('?')
-    );
-    const lastSentence = typedText.slice(lastPuncIndex + 1).trim().toLowerCase();
-    
-    let suggestions = [];
-
-    // 1. Check for phrase matches (Smart Compose)
-    if (lastSentence.length >= 2) {
-        const phraseMatches = commonPhrases
-            .filter(p => p.toLowerCase().startsWith(lastSentence))
-            .slice(0, 3);
-        
-        phraseMatches.forEach(p => suggestions.push({ text: p, type: 'phrase' }));
-    }
-
-    // 2. Check for word matches
     const words_in_text = typedText.trim().split(/\s+/);
     const prefix = words_in_text[words_in_text.length - 1]?.toLowerCase() || "";
     
-    if (prefix.length >= 2) {
-        const wordMatches = commonWords
-            .filter(w => w.startsWith(prefix))
-            .slice(0, 5);
-        
-        wordMatches.forEach(w => {
-            if (!suggestions.some(s => s.text.toLowerCase() === w.toLowerCase())) {
-                suggestions.push({ text: w, type: 'word' });
-            }
-        });
+    if (prefix.length < 2) {
+        suggestionBar.innerHTML = '';
+        return;
     }
-
-    renderSuggestions(suggestions.slice(0, 5));
+    
+    const suggestions = commonWords
+        .filter(w => w.startsWith(prefix))
+        .slice(0, 5);
+        
+    renderSuggestions(suggestions);
 }
 
 function renderSuggestions(suggestions) {
@@ -160,11 +137,9 @@ function renderSuggestions(suggestions) {
     suggestions.forEach(s => {
         const div = document.createElement('div');
         div.className = 'suggestion-item';
-        if (s.type === 'phrase') div.classList.add('smart-compose');
-        div.dataset.suggestion = s.text;
-        div.dataset.type = s.type;
+        div.dataset.suggestion = s;
         const span = document.createElement('span');
-        span.textContent = s.text;
+        span.textContent = s;
         div.appendChild(span);
         suggestionBar.appendChild(div);
     });
@@ -353,23 +328,9 @@ function updateGazePointer(x, y) {
                 if (target.classList.contains('key')) {
                     handleKey(target.dataset.key);
                 } else if (target.classList.contains('suggestion-item')) {
-                    const suggestion = target.dataset.suggestion;
-                    const type = target.dataset.type;
-
-                    if (type === 'phrase') {
-                        const lastPuncIndex = Math.max(
-                            typedText.lastIndexOf('.'),
-                            typedText.lastIndexOf('!'),
-                            typedText.lastIndexOf('?')
-                        );
-                        const prefix = lastPuncIndex === -1 ? "" : typedText.slice(0, lastPuncIndex + 1);
-                        const separator = (prefix && !typedText.slice(lastPuncIndex + 1).startsWith(" ")) ? " " : "";
-                        typedText = prefix + separator + suggestion + " ";
-                    } else {
-                        // Replace the last word
-                        typedText = typedText.replace(/\S*$/, suggestion) + " ";
-                    }
-                    
+                    const words = typedText.trim().split(/\s+/);
+                    words[words.length - 1] = target.dataset.suggestion;
+                    typedText = words.join(" ") + " ";
                     textarea.value = typedText;
                     updateCursorPosition();
                     updateSuggestions();

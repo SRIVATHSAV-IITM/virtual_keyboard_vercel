@@ -9,22 +9,3 @@ const commonWords = [
     "home", "work", "school", "water", "food", "money", "help", "life", "world", "man", "woman", "child", "friend", "family", "house", "room", "door", "window",
     "car", "phone", "book", "game", "keyboard", "gaze", "control", "move", "type", "speak", "save", "clear", "exit", "up", "down", "left", "right"
 ];
-
-const commonPhrases = [
-    "How are you?",
-    "I am fine.",
-    "What are you doing?",
-    "Nice to meet you.",
-    "Thank you so much.",
-    "You are welcome.",
-    "See you later.",
-    "I will be back soon.",
-    "Have a great day!",
-    "Good morning.",
-    "Good night.",
-    "I am sorry for that.",
-    "No problem at all.",
-    "Could you please help me?",
-    "I do not know yet.",
-    "That sounds good."
-];

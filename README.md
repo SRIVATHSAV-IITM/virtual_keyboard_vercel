@@ -4,7 +4,6 @@ This is a standalone, browser-based version of the NODTEXT Virtual Keyboard, opt
 
 ## Features
 - **Client-Side Eye Tracking:** Uses MediaPipe Face Mesh directly in the browser.
-- **Smart Compose:** Suggests common phrases and sentence completions based on context.
 - **Text-to-Speech:** Uses the native Web Speech API.
 - **File Saving:** Saves typed text as a `.txt` file using browser downloads.
 - **Word Suggestions:** Uses a built-in JavaScript word list.

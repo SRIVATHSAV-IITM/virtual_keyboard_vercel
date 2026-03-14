@@ -99,15 +99,6 @@ body, html {
     overflow: hidden;
 }
 
-.suggestion-item.smart-compose {
-    flex: 2;
-    background-color: #f0f8ff;
-    color: #4682b4;
-    font-style: italic;
-    border-left: 2px solid #add8e6;
-    border-right: 2px solid #add8e6;
-}
-
 #keyboard-container {
     flex-grow: 1;
     display: flex;
