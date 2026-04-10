@@ -250,11 +250,13 @@ function exitApp() {
         tracks.forEach(track => track.stop());
     }
     document.body.innerHTML = `
-        <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; background:linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color:white; font-family:sans-serif; text-align:center; position:fixed; top:0; left:0; width:100%; z-index:10000;">
+        <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; background:linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color:white; font-family:sans-serif; text-align:center; position:fixed; top:0; left:0; width:100%; z-index:10000;">
             <h1 style="font-size:3rem; margin-bottom:10px;">Session Ended</h1>
             <p style="font-size:1.5rem; opacity:0.8; margin-bottom:10px;">The eye tracker has been turned off.</p>
-            <p style="margin-bottom:30px;">You can now safely close this tab.</p>
-            <button onclick="location.reload()" style="padding:15px 30px; cursor:pointer; background:rgba(255,255,255,0.2); color:white; border:1px solid white; border-radius:10px; font-size:1.1rem;">Restart Application</button>
+            <div style="display:flex; gap:20px; margin-top:30px;">
+                <button onclick="location.href='../index.html'" style="padding:15px 30px; cursor:pointer; background:rgba(255,255,255,0.2); color:white; border:1px solid white; border-radius:10px; font-size:1.1rem;">Back to Launcher</button>
+                <button onclick="location.reload()" style="padding:15px 30px; cursor:pointer; background:rgba(255,255,255,0.2); color:white; border:1px solid white; border-radius:10px; font-size:1.1rem;">Restart Keyboard</button>
+            </div>
         </div>
     `;
 }
