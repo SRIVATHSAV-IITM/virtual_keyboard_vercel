@@ -1,0 +1,12 @@
+.git
+.gitignore
+.vercel
+node_modules
+*.log
+*.spec
+__pycache__/
+myenv310/
+nodtext_v3_tic_tac_toe_copy/
+*.crdownload
+ttt.py
+understand.py
