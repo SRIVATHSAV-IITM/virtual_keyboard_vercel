@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V3 Eye-Gaze Suite</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+</head>
+<body>
+    <video id="webcam" style="display:none;" autoplay playsinline></video>
+    <div id="gaze-pointer"></div>
+    
+    <div id="app-container">
+        <h1 class="main-title">V3 Eye-Gaze Suite</h1>
+        <p class="subtitle">Select an application by gazing at it</p>
+        
+        <div class="launcher-grid">
+            <div class="interactive card" data-action="launch" data-url="keyboard/index.html">
+                <div class="card-icon">⌨️</div>
+                <div class="card-title">Virtual Keyboard</div>
+                <p>Type and speak using eye-gaze control.</p>
+            </div>
+            
+            <div class="interactive card" data-action="launch" data-url="snake/index.html">
+                <div class="card-icon">🐍</div>
+                <div class="card-title">Retro Snake</div>
+                <p>Classic snake game with gaze-based movement.</p>
+            </div>
+            
+            <div class="interactive card" data-action="launch" data-url="activities/index.html">
+                <div class="card-icon">📝</div>
+                <div class="card-title">Sentence Builder</div>
+                <p>Educational activities for building sentences.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px;">
+             <div class="interactive btn" data-action="exit" style="background:#ff4c4c;">Exit Suite</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

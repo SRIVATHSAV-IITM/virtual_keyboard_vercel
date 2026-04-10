@@ -1,0 +1,15 @@
+0000000000000000000000000000000000000000 e9604a6eda6fbd51d7c7bac5e41b46298ab0a11a Vathsav <ed23b004@smail.iitm.ac.in> 1773294671 +0530	commit (initial): Initial commit
+e9604a6eda6fbd51d7c7bac5e41b46298ab0a11a 0000000000000000000000000000000000000000 Vathsav <ed23b004@smail.iitm.ac.in> 1773295146 +0530	Branch: renamed refs/heads/main to refs/heads/main
+e9604a6eda6fbd51d7c7bac5e41b46298ab0a11a e9604a6eda6fbd51d7c7bac5e41b46298ab0a11a Vathsav <ed23b004@smail.iitm.ac.in> 1773295146 +0530	Branch: renamed refs/heads/main to refs/heads/main
+e9604a6eda6fbd51d7c7bac5e41b46298ab0a11a 183329a6cec1fca6cebe92635f5e06ae8c1d076f Vathsav <ed23b004@smail.iitm.ac.in> 1773296106 +0530	commit: Fix gaze mirroring (inverted X axis)
+183329a6cec1fca6cebe92635f5e06ae8c1d076f deeef32f942d51cdb138b6639c1944ee2e060db1 Vathsav <ed23b004@smail.iitm.ac.in> 1773296431 +0530	commit: Fix: Add proper Exit screen and stop webcam on exit
+deeef32f942d51cdb138b6639c1944ee2e060db1 f01f7ac9b15f2715e2a0c2e541f69a21f29002be Vathsav <ed23b004@smail.iitm.ac.in> 1773396781 +0530	commit: Added WhatsApp-style blinking cursor and position logic
+f01f7ac9b15f2715e2a0c2e541f69a21f29002be f01f7ac9b15f2715e2a0c2e541f69a21f29002be Vathsav <ed23b004@smail.iitm.ac.in> 1773397083 +0530	checkout: moving from main to dev_branch
+f01f7ac9b15f2715e2a0c2e541f69a21f29002be f01f7ac9b15f2715e2a0c2e541f69a21f29002be Vathsav <ed23b004@smail.iitm.ac.in> 1773397612 +0530	checkout: moving from dev_branch to main
+f01f7ac9b15f2715e2a0c2e541f69a21f29002be 9b39fd8a9355cf6134b9515b665c85f8edbac1a6 Vathsav <ed23b004@smail.iitm.ac.in> 1773400092 +0530	commit: Final push: Refined blinking cursor logic and styling
+9b39fd8a9355cf6134b9515b665c85f8edbac1a6 f01f7ac9b15f2715e2a0c2e541f69a21f29002be Vathsav <ed23b004@smail.iitm.ac.in> 1773463019 +0530	checkout: moving from main to dev_branch
+f01f7ac9b15f2715e2a0c2e541f69a21f29002be b186801fdf7df2c00c41b59df0300c4e23991361 Vathsav <ed23b004@smail.iitm.ac.in> 1773463294 +0530	commit: feat: implement smart compose phrase suggestions and enhanced styling
+b186801fdf7df2c00c41b59df0300c4e23991361 90ef68476cfcca0d7e0f6fdf4a6e5e0f07e2a6da Vathsav <ed23b004@smail.iitm.ac.in> 1773463682 +0530	revert: Revert "feat: implement smart compose phrase suggestions and enhanced styling"
+90ef68476cfcca0d7e0f6fdf4a6e5e0f07e2a6da b1309404dd23ada35e0670f8adca890731b69add Vathsav <ed23b004@smail.iitm.ac.in> 1773464819 +0530	commit: Added comprehensive SYSTEM_OVERVIEW.md documentation
+b1309404dd23ada35e0670f8adca890731b69add 9b39fd8a9355cf6134b9515b665c85f8edbac1a6 Vathsav <ed23b004@smail.iitm.ac.in> 1773464833 +0530	checkout: moving from dev_branch to main
+9b39fd8a9355cf6134b9515b665c85f8edbac1a6 a9655614b3698a86838db28ddb5631ece2873a67 Vathsav <ed23b004@smail.iitm.ac.in> 1773464833 +0530	merge dev_branch: Merge made by the 'ort' strategy.
