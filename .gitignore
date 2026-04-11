@@ -1,0 +1,34 @@
+# Python virtual environments
+myenv*/
+myenv310/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Temporary and cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.crdownload
+*.tmp
+*.bak
+*.swp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+__MACOSX/
+
+# Build and IDE files
+.vscode/
+.idea/
+build/
+dist/
+*.spec

@@ -1,0 +1,10 @@
+
+eel
+pygame>=2.6.0
+opencv-python
+mediapipe==0.10.14
+numpy
+pyttsx3
+PyAutoGUI
+nltk
+protobuf>=4.25.0,<5.0.0

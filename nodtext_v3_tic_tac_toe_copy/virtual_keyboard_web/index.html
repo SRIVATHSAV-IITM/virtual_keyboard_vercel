@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaze-Controlled Virtual Keyboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Text Area -->
+        <div id="text-area-container">
+            <textarea id="main-textarea" readonly placeholder="Start typing..."></textarea>
+            <div id="custom-cursor"></div>
+        </div>
+
+        <!-- Suggestion Bar -->
+        <div id="suggestion-bar">
+            <!-- Suggestions will be injected here -->
+        </div>
+
+        <!-- Keyboard Area -->
+        <div id="keyboard-container">
+            <!-- Keyboard rows will be injected here -->
+        </div>
+
+        <!-- File Save Prompt Overlay (hidden by default) -->
+        <div id="save-prompt-overlay" class="hidden">
+            <div id="save-prompt-box">
+                <h3>Enter file name:</h3>
+                <input type="text" id="filename-input" readonly>
+                <p>Use the keyboard to type and 'Enter' to save.</p>
+            </div>
+        </div>
+
+        <!-- Gaze Pointer -->
+        <div id="gaze-pointer"></div>
+    </div>
+
+    <!-- Eel integration -->
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurogati Activities Center Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- MediaPipe Face Mesh -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+</head>
+<body>
+    <!-- Webcam element for tracking -->
+    <video id="webcam" style="display:none;" autoplay playsinline></video>
+    
+    <!-- Gaze Pointer -->
+    <div id="gaze-pointer"></div>
+    
+    <div id="hub-container">
+        <header>
+            <h1 class="main-title">Neurogati</h1>
+            <h2 class="subtitle">Activities Center</h2>
+            <p class="tagline">Gaze at an application to launch it</p>
+        </header>
+
+        <div class="launcher-grid">
+            <div class="interactive card" data-action="launch" data-url="virtual_keyboard/index.html">
+                <div class="card-icon">⌨️</div>
+                <div class="card-title">Virtual Keyboard</div>
+                <p>Type and communicate using only your eyes.</p>
+            </div>
+            
+            <div class="interactive card" data-action="launch" data-url="snake_game/index.html">
+                <div class="card-icon">🐍</div>
+                <div class="card-title">Snake Game</div>
+                <p>Control the snake with your gaze and eat food!</p>
+            </div>
+            
+            <div class="interactive card" data-action="launch" data-url="sentence_builder/index.html">
+                <div class="card-icon">📝</div>
+                <div class="card-title">Activities Center</div>
+                <p>Learn to build sentences with eye-gaze control.</p>
+            </div>
+        </div>
+
+        <div class="footer-controls">
+             <div class="interactive btn exit-btn" data-action="exit">Exit Suite</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

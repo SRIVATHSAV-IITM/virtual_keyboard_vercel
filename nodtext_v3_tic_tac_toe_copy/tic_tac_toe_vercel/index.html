@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe (Vercel Ready)</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- MediaPipe Face Mesh -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Hidden video element for MediaPipe -->
+        <video id="webcam" style="display:none;" autoplay playsinline></video>
+        
+        <div id="level-selection">
+            <h1>Select Difficulty</h1>
+            <button class="level-btn" data-level="easy">Easy</button>
+            <button class="level-btn" data-level="medium">Medium</button>
+            <button class="level-btn" data-level="hard">Hard</button>
+        </div>
+        <div id="game-container" class="hidden">
+            <div id="game-board"></div>
+            <button id="exitButton">Change Level</button>
+        </div>
+        <div id="winning-message" class="hidden">
+            <h1 data-winning-message-text></h1>
+            <button id="newGameButton">Play Again</button>
+        </div>
+        <button id="closeButton">Close Game</button>
+
+        <!-- Gaze Pointer -->
+        <div id="gaze-pointer"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

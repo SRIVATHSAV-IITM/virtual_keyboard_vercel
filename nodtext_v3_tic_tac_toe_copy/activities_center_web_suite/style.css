@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #f8fafc;
+    user-select: none;
+}
+
+#gaze-pointer {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(239, 68, 68, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    display: none;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+    border: 2px solid white;
+}
+
+#hub-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.main-title {
+    font-size: 5rem;
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(to right, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
+}
+
+.subtitle {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin: -10px 0 10px 0;
+    color: #94a3b8;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.launcher-grid {
+    display: flex;
+    gap: 40px;
+    padding: 20px;
+}
+
+.card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    width: 280px;
+    padding: 40px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.card-icon {
+    font-size: 4.5rem;
+    margin-bottom: 25px;
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #f1f5f9;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.footer-controls {
+    margin-top: 80px;
+}
+
+.btn {
+    padding: 18px 45px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.exit-btn {
+    color: #ef4444;
+}
+
+/* Interactive Dwell Effect */
+.interactive {
+    --dwell-progress: 0%;
+}
+
+.interactive::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 8px;
+    width: var(--dwell-progress);
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    z-index: 10;
+    transition: width 0.1s linear;
+}
+
+.card.interactive::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(59, 130, 246, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+}
+
+/* When progress starts, highlight card */
+.card.interactive[style*="--dwell-progress: 0%"]::before {
+    opacity: 0;
+}
+.card.interactive:not([style*="--dwell-progress: 0%"])::before {
+    opacity: 1;
+}

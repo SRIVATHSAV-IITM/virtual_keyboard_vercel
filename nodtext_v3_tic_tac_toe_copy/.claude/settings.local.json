@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3.10 -m venv:*)",
+      "Bash(nodtxt/bin/pip install -r requirements.txt)",
+      "Bash(source nodtxt/bin/activate:*)",
+      "Bash(python main.py:*)",
+      "Bash(find:*)",
+      "Bash(pip install:*)",
+      "Bash(timeout 10 python:*)",
+      "Bash(lsof:*)",
+      "Bash(xargs kill:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

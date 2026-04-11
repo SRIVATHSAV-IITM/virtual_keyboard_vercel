@@ -1,0 +1,189 @@
+:root {
+    --bg-color: #f5f5f5;
+    --text-area-bg: #c8dcff;
+    --suggestion-bar-bg: #e6e6fa;
+    --keyboard-bg: #d2ebd2;
+    --key-border: #dcdcdc;
+    --dwell-progress-color: #64b4ff;
+    --cursor-color: #ff3232;
+    
+    /* Group Colors */
+    --group1-color: #dcdcfa; /* Space, Speak, Save, Clear */
+    --group2-color: #fadcdc; /* Enter */
+    --group3-color: #dcfadc; /* Backspace */
+    --group4-color: #fafac8; /* Nav and Exit */
+    
+    --letters-color: #ebebff;
+    --numbers-color: #f5f5ff;
+    --symbols-color: #e1e1ff;
+    --function-color: #d7d7ff;
+    --caps-lock-on: #00ff00;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+}
+
+#app-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+#text-area-container {
+    position: relative;
+    height: 35vh;
+    background-color: var(--text-area-bg);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#main-textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    resize: none;
+    outline: none;
+    color: #323232;
+    padding: 0;
+}
+
+#suggestion-bar {
+    height: 50px;
+    background-color: var(--suggestion-bar-bg);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.suggestion-item {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+#keyboard-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.keyboard-row {
+    display: flex;
+    flex: 1;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.key {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid var(--key-border);
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--letters-color);
+    box-sizing: border-box;
+}
+
+/* Key Multipliers - ported from keyboard.py logic */
+.key.double { flex: 2; }
+.key.space { flex: 6; }
+
+/* Group colorings */
+.key.group1 { background-color: var(--group1-color); }
+.key.group2 { background-color: var(--group2-color); }
+.key.group3 { background-color: var(--group3-color); }
+.key.group4 { background-color: var(--group4-color); }
+.key.number { background-color: var(--numbers-color); }
+.key.symbol { background-color: var(--symbols-color); }
+.key.function { background-color: var(--function-color); }
+.key.capslock-active { background-color: var(--caps-lock-on); }
+
+/* Dwell Progress Animation */
+.key::before, .suggestion-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--dwell-progress, 0%);
+    background-color: rgba(100, 180, 255, 0.4);
+    z-index: 1;
+}
+
+.key span, .suggestion-item span {
+    position: relative;
+    z-index: 2;
+}
+
+/* Gaze Pointer */
+#gaze-pointer {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 50, 50, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+/* Save Prompt Overlay */
+.hidden { display: none !important; }
+
+#save-prompt-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#save-prompt-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+#filename-input {
+    font-size: 24px;
+    margin: 20px 0;
+    width: 80%;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+}

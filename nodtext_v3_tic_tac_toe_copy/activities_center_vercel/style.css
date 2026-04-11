@@ -1,0 +1,225 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #f0f8ff; /* Light blue background */
+    user-select: none;
+}
+
+#gaze-pointer {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    background-color: rgba(255, 0, 0, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    display: none;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+#app-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Button & Box styling with Dwell progress */
+.interactive {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    --dwell-progress: 0%;
+}
+
+.interactive::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--dwell-progress);
+    background-color: rgba(0, 255, 0, 0.4);
+    z-index: 1;
+    transition: width 0.1s linear;
+}
+
+.interactive span {
+    position: relative;
+    z-index: 2;
+}
+
+/* Buttons */
+.btn {
+    padding: 20px 40px;
+    font-size: 2rem;
+    margin: 10px;
+    border: 3px solid #333;
+    border-radius: 15px;
+    background-color: white;
+    font-weight: bold;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Specific elements */
+.title {
+    font-size: 3rem;
+    color: #2c78dc;
+    background: white;
+    padding: 20px 40px;
+    border: 4px solid #2c78dc;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.quote {
+    font-size: 1.5rem;
+    color: #504614;
+    background: #fffacd;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+/* Level Select */
+.level-grid {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.level-btn {
+    width: 250px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    border-radius: 20px;
+    border: 4px solid #333;
+    font-weight: bold;
+}
+
+/* Gameplay */
+.top-bar {
+    width: 90%;
+    height: 60px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border-radius: 15px;
+    border: 3px solid black;
+    font-weight: bold;
+}
+
+.target-bar {
+    background-color: #90ee90;
+    color: #006400;
+}
+
+.current-bar {
+    background-color: #add8e6;
+    color: #000;
+}
+
+.word-area {
+    width: 90%;
+    flex-grow: 1;
+    background-color: #dcdcdc;
+    border: 4px solid #646464;
+    border-radius: 20px;
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.word-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    border: 3px solid #333;
+    border-radius: 15px;
+    padding: 10px 20px;
+    min-width: 150px;
+    min-height: 80px;
+}
+
+.word-box.error {
+    border-color: red !important;
+    background-color: #ffcccc !important;
+}
+
+.control-area {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.control-btn {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    border: 3px solid #333;
+    background: white;
+}
+
+/* Feedback Overlay */
+.overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5000;
+}
+
+.overlay-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    border: 6px solid #333;
+    width: 600px;
+}
+
+.overlay-content.correct { border-color: #009600; }
+.overlay-content.wrong { border-color: #c83232; }
+
+.overlay-msg {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+.overlay-content.correct .overlay-msg { color: #145a14; }
+.overlay-content.wrong .overlay-msg { color: #c83232; }

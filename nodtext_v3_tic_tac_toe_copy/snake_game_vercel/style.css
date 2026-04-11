@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #1a1a1a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+#gaze-pointer {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 0, 0, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    display: none;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2b3318; /* Dark green background like original */
+}
+
+#game-canvas {
+    background: #adc860; /* Light green play area */
+    border: 5px solid #2b3318;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.7);
+    pointer-events: auto;
+}
+
+.title {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    color: #adc860;
+    text-shadow: 3px 3px 0px #2b3318;
+}
+
+.score {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #adc860;
+    z-index: 50;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.interactive {
+    position: relative;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background: #3cb371;
+    color: white;
+    border: 3px solid #2b3318;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    --dwell-progress: 0%;
+    pointer-events: auto;
+}
+
+.interactive::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--dwell-progress);
+    background-color: rgba(50, 205, 50, 0.6);
+    z-index: -1;
+    transition: width 0.1s linear;
+}
+
+.difficulty-label {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #aaa;
+}
+
+/* Grid overlay for gaze control visualization */
+#grid-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    opacity: 0.15;
+    pointer-events: none;
+    border: 2px solid white;
+}
+
+.grid-cell {
+    border: 1px dashed white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.active-cell {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.arrow {
+    font-size: 3rem;
+    color: white;
+}
